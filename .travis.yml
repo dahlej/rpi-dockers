@@ -8,13 +8,14 @@ script:
 # build image
 - docker build . -t dahlej/rpi-alpine-openjdk8
 # test image
-- docker run dahlej/rpi-alpine-openjdk8 --version
+#- docker run dahlej/rpi-alpine-openjdk8 --version
 # push image
+- docker push dahlej/rpi-alpine-openjdk8
 - >
-  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    TAG=$(grep "ENV MYSQL_VERSION" Dockerfile | awk 'NF>1{print $NF}')
-    docker tag dahlej/rpi-alpine-openjdk8:$TAG
-    docker push dahlej/rpi-alpine-openjdk8:$TAG
-    docker push dahlej/rpi-alpine-openjdk8
-  fi
+#  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+#    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+#    TAG=$(grep "ENV MYSQL_VERSION" Dockerfile | awk 'NF>1{print $NF}')
+#    docker tag dahlej/rpi-alpine-openjdk8:$TAG
+#    docker push dahlej/rpi-alpine-openjdk8:$TAG
+#    docker push dahlej/rpi-alpine-openjdk8
+#  fi
