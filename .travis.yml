@@ -7,8 +7,10 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - docker build . -t dahlej/rpi-alpine-tomcat
+- docker build ./rpi-spark-master/ -t dahlej/rpi-spark-master
 # test image
 #- docker run dahlej/rpi-alpine-openjdk8 --version
 # push image
 - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 - docker push dahlej/rpi-alpine-tomcat
+- docker push dahlej/rpi-spark-master
